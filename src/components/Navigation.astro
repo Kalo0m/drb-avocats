@@ -1,0 +1,114 @@
+---
+interface Props {
+  readonly currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Accueil' },
+  { href: '/equipe', label: 'L\'équipe' },
+  { href: '/anne-rabaey', label: 'Anne Rabaey' },
+  { href: '/caroline-bot', label: 'Caroline Bot' },
+  { href: '/honoraires', label: 'Honoraires' },
+  { href: '/contact', label: 'Contact' },
+] as const;
+---
+
+<nav class="hidden lg:flex items-center gap-10">
+  {navLinks.map((link) => (
+    <a
+      href={link.href}
+      class:list={[
+        'text-sm font-light tracking-wide transition-all duration-300 relative py-2',
+        currentPath === link.href 
+          ? 'text-gold' 
+          : 'text-white/70 hover:text-white',
+      ]}
+    >
+      {link.label}
+      {currentPath === link.href && (
+        <span class="absolute bottom-0 left-0 right-0 h-px bg-gold"></span>
+      )}
+    </a>
+  ))}
+</nav>
+
+<!-- Mobile Navigation -->
+<div class="lg:hidden">
+  <button
+    id="mobile-menu-button"
+    class="text-white p-2 hover:text-gold transition-colors"
+    aria-label="Ouvrir le menu"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+  </button>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-navy z-50 transform translate-x-full transition-transform duration-500 ease-out lg:hidden"
+>
+  <div class="flex justify-between items-center p-6 border-b border-white/10">
+    <span class="text-sm font-display font-medium tracking-super-wide text-white uppercase">
+      DRB Avocats
+    </span>
+    <button
+      id="mobile-menu-close"
+      class="text-white p-2 hover:text-gold transition-colors"
+      aria-label="Fermer le menu"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <nav class="flex flex-col p-6 pt-12">
+    {navLinks.map((link, index) => (
+      <a
+        href={link.href}
+        class:list={[
+          'text-2xl font-display font-light py-4 border-b border-white/5 transition-colors duration-300',
+          currentPath === link.href ? 'text-gold' : 'text-white/70 hover:text-white',
+        ]}
+        style={`animation-delay: ${index * 50}ms`}
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
+  <div class="absolute bottom-12 left-6 right-6">
+    <a
+      href="tel:0233941355"
+      class="flex items-center justify-center gap-2 py-4 border border-gold text-gold hover:bg-gold hover:text-navy transition-all duration-300 text-sm tracking-wide"
+    >
+      Appeler le cabinet
+    </a>
+  </div>
+</div>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const menuClose = document.getElementById('mobile-menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('translate-x-full');
+    document.body.style.overflow = 'hidden';
+  });
+
+  menuClose?.addEventListener('click', () => {
+    mobileMenu?.classList.add('translate-x-full');
+    document.body.style.overflow = '';
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

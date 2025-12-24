@@ -1,0 +1,59 @@
+---
+import Navigation from "./Navigation.astro";
+
+interface Props {
+  readonly currentPath?: string;
+  readonly isTransparent?: boolean;
+}
+
+const { currentPath = "", isTransparent = false } = Astro.props;
+---
+
+<header
+  class:list={[
+    "fixed top-0 left-0 right-0 z-40 transition-all duration-500",
+    isTransparent ? "bg-transparent" : "bg-navy/95 backdrop-blur-md",
+  ]}
+  id="header"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20 lg:h-24">
+      <!-- Logo -->
+      <a href="/" class="group">
+        <span
+          class="text-sm font-display font-medium tracking-super-wide text-white uppercase"
+        >
+          DRB Avocats
+        </span>
+      </a>
+
+      <!-- Navigation -->
+      <Navigation currentPath={currentPath} />
+
+      <!-- Phone CTA -->
+      <a
+        href="tel:0233941355"
+        class="hidden lg:flex items-center gap-3 text-white/80 hover:text-gold transition-colors duration-300 text-sm"
+      >
+        <span class="w-px h-6 bg-white/20"></span>
+        <span class="font-light tracking-wide">02 33 94 13 55</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("header");
+
+  if (header?.classList.contains("bg-transparent")) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.remove("bg-transparent");
+        header.classList.add("bg-navy/95", "backdrop-blur-md");
+      } else {
+        header.classList.add("bg-transparent");
+        header.classList.remove("bg-navy/95", "backdrop-blur-md");
+      }
+    });
+  }
+</script>

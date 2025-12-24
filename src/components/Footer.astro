@@ -1,0 +1,82 @@
+---
+const currentYear = new Date().getFullYear();
+
+const navLinks = [
+  { href: '/', label: 'Accueil' },
+  { href: '/equipe', label: "L'équipe" },
+  { href: '/honoraires', label: 'Honoraires' },
+  { href: '/contact', label: 'Contact' },
+] as const;
+---
+
+<footer class="bg-navy text-white">
+  <!-- Main Footer -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <!-- Brand -->
+      <div class="lg:col-span-5 space-y-6">
+        <h3 class="text-sm font-display font-medium tracking-super-wide uppercase">
+          DRB Avocats
+        </h3>
+        <p class="text-white/50 text-sm leading-relaxed max-w-sm">
+          Anne RABAEY & Caroline BOT — Votre cabinet d'avocats à Cherbourg-en-Cotentin. 
+          Accompagnement personnalisé et défense de vos intérêts.
+        </p>
+        <div class="flex items-center gap-2 text-xs text-white/40">
+          <span class="w-2 h-2 rounded-full bg-gold"></span>
+          <span class="tracking-wide">Secret professionnel garanti</span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="lg:col-span-3">
+        <h4 class="text-xs font-medium tracking-wider uppercase text-white/40 mb-6">Navigation</h4>
+        <nav class="flex flex-col gap-3">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-white/60 hover:text-gold transition-colors text-sm"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Contact -->
+      <div class="lg:col-span-4">
+        <h4 class="text-xs font-medium tracking-wider uppercase text-white/40 mb-6">Contact</h4>
+        <div class="space-y-4 text-sm text-white/60">
+          <p class="leading-relaxed">
+            3, rue de l'Alma - 1er étage<br />
+            50102 Cherbourg-en-Cotentin
+          </p>
+          <div class="space-y-2">
+            <a href="tel:0233941355" class="block hover:text-gold transition-colors">
+              02 33 94 13 55
+            </a>
+            <a href="mailto:dr.avocats@orange.fr" class="block hover:text-gold transition-colors">
+              dr.avocats@orange.fr
+            </a>
+          </div>
+          <p class="text-white/40 text-xs">
+            Lun - Ven : 9h30 - 12h00 | 14h00 - 17h00
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
+        <p>&copy; {currentYear} DRB Avocats</p>
+        <div class="flex gap-6">
+          <a href="/mentions-legales" class="hover:text-white/60 transition-colors">Mentions légales</a>
+          <a href="/politique-confidentialite" class="hover:text-white/60 transition-colors">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

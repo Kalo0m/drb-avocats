@@ -1,16 +1,276 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 
+const expertises = [
+  { title: 'Droit de la famille', description: 'Divorce, garde d\'enfants, pension alimentaire, adoption' },
+  { title: 'Droit pénal', description: 'Défense des victimes et mis en cause, violences, infractions' },
+  { title: 'Droit immobilier', description: 'Construction, vices cachés, conflits de voisinage' },
+  { title: 'Responsabilité civile', description: 'Accidents, préjudices corporels, indemnisation' },
+  { title: 'Droit des baux', description: 'Baux commerciaux et d\'habitation, expulsions' },
+  { title: 'Droit bancaire', description: 'Crédits, saisies, recouvrement' },
+] as const;
+
+const valeurs = [
+  { title: 'Proximité', text: 'Un cabinet ancré dans le territoire' },
+  { title: 'Écoute', text: 'Comprendre votre situation' },
+  { title: 'Engagement', text: 'Défendre vos intérêts' },
+  { title: 'Indépendance', text: 'Agir dans votre seul intérêt' },
+] as const;
+
+const avocates = [
+  {
+    name: 'Anne Rabaey',
+    role: 'Avocat & Médiateur',
+    description: 'Spécialisée en droit de la famille, droit pénal et droit immobilier',
+    image: 'https://le-de.cdn-website.com/e7b4430ff46446b59fbb67b6af12a95d/dms3rep/multi/opt/b6669fb7-269c-40fd-837b-129885ee29ab-1600-1920w.jpg',
+    href: '/anne-rabaey',
+  },
+  {
+    name: 'Caroline Bot',
+    role: 'Avocat',
+    description: 'Spécialisée en responsabilité civile, droit pénal routier et droit bancaire',
+    image: 'https://le-de.cdn-website.com/e7b4430ff46446b59fbb67b6af12a95d/dms3rep/multi/opt/e054f26c-6862-4f61-b380-70438c7efb64-1600-1920w.jpg',
+    href: '/caroline-bot',
+  },
+] as const;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout 
+  title="DRB Avocats — Cabinet d'avocats à Cherbourg" 
+  currentPath="/" 
+  isTransparentHeader={true}
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center">
+    <!-- Background -->
+    <div class="absolute inset-0">
+      <div 
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('https://le-de.cdn-website.com/e7b4430ff46446b59fbb67b6af12a95d/dms3rep/multi/opt/c0f683cc-3de6-4cdb-9807-4436a83c4c51-1600-1920w.jpg');"
+      ></div>
+      <div class="absolute inset-0 bg-navy/85"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-navy/50 via-transparent to-navy"></div>
+    </div>
+    
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-0">
+      <div class="max-w-3xl">
+        <p class="text-gold text-sm tracking-super-wide uppercase mb-6 opacity-0 animate-fade-up">
+          Cabinet d'avocats à Cherbourg
+        </p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-light text-white leading-tight mb-8 opacity-0 animate-fade-up animate-delay-100">
+          Votre situation est unique,<br />
+          <span class="font-medium">notre intervention aussi.</span>
+        </h1>
+        <p class="text-lg text-white/60 leading-relaxed mb-12 max-w-xl opacity-0 animate-fade-up animate-delay-200">
+          Anne Rabaey & Caroline Bot vous accompagnent avec humanité et expertise 
+          dans la défense de vos droits.
+        </p>
+        
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-up animate-delay-300">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 bg-gold text-navy font-medium text-sm tracking-wide hover:bg-gold-light transition-all duration-300"
+          >
+            Prendre rendez-vous
+          </a>
+          <a
+            href="tel:0233941355"
+            class="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white text-sm tracking-wide hover:bg-white/5 transition-all duration-300"
+          >
+            02 33 94 13 55
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2">
+      <div class="w-px h-16 bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div>
+          <p class="text-gold text-sm tracking-super-wide uppercase mb-6">Le Cabinet</p>
+          <h2 class="text-3xl lg:text-4xl font-display font-light text-navy leading-tight mb-8">
+            Un accompagnement<br />
+            <span class="font-medium">sur mesure</span>
+          </h2>
+          <div class="space-y-6 text-charcoal/70 leading-relaxed">
+            <p>
+              L'avocat analyse, avec précision et humanité, la difficulté rencontrée. 
+              Il connaît vos droits et vous assiste pour les faire respecter.
+            </p>
+            <p>
+              Tenus au secret professionnel, notre engagement est fondé sur l'écoute, 
+              la confiance, la compréhension de votre activité ou de votre histoire.
+            </p>
+            <p class="text-navy font-medium">
+              Nous sommes avocats pour vous accompagner, vous conseiller et vous défendre.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Values Grid -->
+        <div class="grid grid-cols-2 gap-6">
+          {valeurs.map((valeur, index) => (
+            <div 
+              class="p-8 bg-white border border-sand/50 hover:border-gold/30 transition-all duration-300 group"
+            >
+              <span class="text-gold text-xs tracking-wider uppercase mb-3 block opacity-60">0{index + 1}</span>
+              <h3 class="text-lg font-display font-medium text-navy mb-2">{valeur.title}</h3>
+              <p class="text-sm text-charcoal/50">{valeur.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertises -->
+  <section class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <p class="text-gold text-sm tracking-super-wide uppercase mb-6">Domaines d'expertise</p>
+        <h2 class="text-3xl lg:text-4xl font-display font-light text-navy">
+          Nos domaines<br />
+          <span class="font-medium">d'intervention</span>
+        </h2>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-sand/50">
+        {expertises.map((expertise) => (
+          <div class="bg-white p-10 hover:bg-cream transition-colors duration-300 group">
+            <h3 class="text-lg font-display font-medium text-navy mb-3 group-hover:text-gold transition-colors duration-300">
+              {expertise.title}
+            </h3>
+            <p class="text-sm text-charcoal/50 leading-relaxed">{expertise.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <p class="text-gold text-sm tracking-super-wide uppercase mb-6">L'Équipe</p>
+        <h2 class="text-3xl lg:text-4xl font-display font-light text-navy">
+          Deux avocates<br />
+          <span class="font-medium">à votre service</span>
+        </h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+        {avocates.map((avocate) => (
+          <a
+            href={avocate.href}
+            class="group block"
+          >
+            <div class="relative overflow-hidden mb-8">
+              <div class="aspect-[3/4] overflow-hidden bg-sand">
+                <img
+                  src={avocate.image}
+                  alt={avocate.name}
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div>
+              <p class="text-gold text-xs tracking-wider uppercase mb-2">{avocate.role}</p>
+              <h3 class="text-2xl font-display font-medium text-navy mb-3 group-hover:text-gold transition-colors duration-300">
+                {avocate.name}
+              </h3>
+              <p class="text-sm text-charcoal/50 leading-relaxed mb-6">{avocate.description}</p>
+              <span class="inline-flex items-center gap-2 text-sm text-navy group-hover:text-gold transition-colors duration-300">
+                Découvrir
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-32 bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div>
+          <p class="text-gold text-sm tracking-super-wide uppercase mb-6">Contact</p>
+          <h2 class="text-3xl lg:text-4xl font-display font-light leading-tight mb-8">
+            Une question ?<br />
+            <span class="font-medium">Contactez-nous</span>
+          </h2>
+          <p class="text-white/50 leading-relaxed mb-12 max-w-md">
+            Notre cabinet est à votre disposition pour répondre à vos questions 
+            et vous accompagner dans vos démarches juridiques.
+          </p>
+          
+          <div class="space-y-6 mb-12">
+            <div class="flex items-start gap-4">
+              <span class="w-px h-12 bg-gold/30"></span>
+              <div>
+                <p class="text-white/40 text-xs tracking-wider uppercase mb-1">Adresse</p>
+                <p class="text-white/80">3, rue de l'Alma — Cherbourg</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="w-px h-12 bg-gold/30"></span>
+              <div>
+                <p class="text-white/40 text-xs tracking-wider uppercase mb-1">Téléphone</p>
+                <a href="tel:0233941355" class="text-white/80 hover:text-gold transition-colors">
+                  02 33 94 13 55
+                </a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="w-px h-12 bg-gold/30"></span>
+              <div>
+                <p class="text-white/40 text-xs tracking-wider uppercase mb-1">Email</p>
+                <a href="mailto:dr.avocats@orange.fr" class="text-white/80 hover:text-gold transition-colors">
+                  dr.avocats@orange.fr
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-3 px-8 py-4 bg-gold text-navy font-medium text-sm tracking-wide hover:bg-gold-light transition-all duration-300"
+          >
+            Prendre rendez-vous
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        
+        <div class="relative">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src="https://le-de.cdn-website.com/e7b4430ff46446b59fbb67b6af12a95d/dms3rep/multi/opt/IMG_20210922_154743-1920w.jpg"
+              alt="Cabinet DRB Avocats"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="absolute -bottom-6 -left-6 p-8 bg-gold text-navy">
+            <p class="text-xs tracking-wider uppercase mb-1 opacity-60">Horaires</p>
+            <p class="font-display font-medium">Lun - Ven</p>
+            <p class="text-sm opacity-80">9h30 - 17h00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
