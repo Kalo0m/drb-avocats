@@ -1,0 +1,31 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0c1821"/>
+  
+  <!-- Decorative gold line -->
+  <rect x="80" y="200" width="4" height="230" fill="#c9a227"/>
+  
+  <!-- Text -->
+  <text x="110" y="250" font-family="system-ui, sans-serif" font-size="72" font-weight="700" fill="white">DRB</text>
+  <text x="110" y="330" font-family="system-ui, sans-serif" font-size="72" font-weight="300" fill="white">AVOCATS</text>
+  
+  <!-- Subtitle -->
+  <text x="110" y="400" font-family="system-ui, sans-serif" font-size="24" fill="#c9a227" letter-spacing="0.2em">CABINET D'AVOCATS</text>
+  
+  <!-- Location -->
+  <text x="110" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#ffffff" opacity="0.6">Cherbourg-en-Cotentin</text>
+  
+  <!-- Names -->
+  <text x="700" y="300" font-family="system-ui, sans-serif" font-size="28" fill="#ffffff" opacity="0.8">Anne RABAEY</text>
+  <text x="700" y="340" font-family="system-ui, sans-serif" font-size="16" fill="#c9a227">Avocat &amp; Médiateur</text>
+  
+  <text x="700" y="420" font-family="system-ui, sans-serif" font-size="28" fill="#ffffff" opacity="0.8">Caroline BOT</text>
+  <text x="700" y="460" font-family="system-ui, sans-serif" font-size="16" fill="#c9a227">Avocat • Ancien Bâtonnier</text>
+  
+  <!-- Decorative elements -->
+  <rect x="700" y="360" width="200" height="1" fill="#c9a227" opacity="0.3"/>
+  
+  <!-- Contact info at bottom -->
+  <text x="110" y="560" font-family="system-ui, sans-serif" font-size="16" fill="#ffffff" opacity="0.5">02 33 94 13 55 • dr.avocats@orange.fr</text>
+</svg>
+

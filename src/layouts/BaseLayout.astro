@@ -7,14 +7,100 @@ interface Props {
   readonly description?: string;
   readonly currentPath?: string;
   readonly isTransparentHeader?: boolean;
+  readonly image?: string;
 }
 
 const {
   title,
-  description = "DRB Avocats - Cabinet d'avocats à Cherbourg-en-Cotentin. Anne RABAEY et Caroline BOT vous accompagnent en droit de la famille, droit pénal, droit immobilier et droit des affaires.",
-  currentPath = '',
+  description = "DRB Avocats - Cabinet d'avocats à Cherbourg-en-Cotentin. Anne RABAEY et Caroline BOT vous accompagnent en droit de la famille, droit pénal, droit immobilier et responsabilité civile.",
+  currentPath = '/',
   isTransparentHeader = false,
+  image = '/og-image.svg',
 } = Astro.props;
+
+const siteUrl = 'https://www.drb-avocats.fr';
+const canonicalUrl = new URL(currentPath, siteUrl).href;
+const ogImageUrl = new URL(image, siteUrl).href;
+
+// Données structurées Schema.org
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "DRB Avocats",
+  "alternateName": "Cabinet DRB Avocats Cherbourg",
+  "description": "Cabinet d'avocats à Cherbourg-en-Cotentin. Anne RABAEY et Caroline BOT - Droit de la famille, droit pénal, droit immobilier, responsabilité civile.",
+  "url": siteUrl,
+  "logo": `${siteUrl}/logo.png`,
+  "image": ogImageUrl,
+  "telephone": "+33233941355",
+  "email": "dr.avocats@orange.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3, rue de l'Alma - 1er étage",
+    "addressLocality": "Cherbourg-en-Cotentin",
+    "postalCode": "50102",
+    "addressRegion": "Normandie",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.6386,
+    "longitude": -1.6163
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:30",
+      "closes": "12:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "14:00",
+      "closes": "17:00"
+    }
+  ],
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Cherbourg-en-Cotentin"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Manche"
+    },
+    {
+      "@type": "AdministrativeArea", 
+      "name": "Normandie"
+    }
+  ],
+  "sameAs": [],
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Anne Rabaey",
+      "jobTitle": "Avocat & Médiateur"
+    },
+    {
+      "@type": "Person",
+      "name": "Caroline Bot",
+      "jobTitle": "Avocat"
+    }
+  ],
+  "knowsAbout": [
+    "Droit de la famille",
+    "Droit pénal",
+    "Droit immobilier",
+    "Responsabilité civile",
+    "Droit bancaire",
+    "Droit des baux",
+    "Médiation"
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -22,11 +108,46 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO de base -->
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="DRB Avocats - Anne Rabaey & Caroline Bot" />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Géolocalisation -->
+    <meta name="geo.region" content="FR-50" />
+    <meta name="geo.placename" content="Cherbourg-en-Cotentin" />
+    <meta name="geo.position" content="49.6386;-1.6163" />
+    <meta name="ICBM" content="49.6386, -1.6163" />
+    
+    <!-- Thème -->
     <meta name="theme-color" content="#0c1821" />
+    <meta name="msapplication-TileColor" content="#0c1821" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DRB Avocats - Cabinet d'avocats à Cherbourg" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="DRB Avocats" />
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="DRB Avocats - Cabinet d'avocats à Cherbourg" />
     
     <!-- Google Fonts - Modern & Elegant -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,13 +157,8 @@ const {
       rel="stylesheet"
     />
     
-    <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="fr_FR" />
-    
-    <title>{title}</title>
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
   </head>
   <body class="font-body text-charcoal bg-cream antialiased">
     <Header currentPath={currentPath} isTransparent={isTransparentHeader} />
