@@ -1,0 +1,229 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const principes = [
+  {
+    title: "Premier rendez-vous",
+    description: "30 minutes pour faire connaissance et examiner votre situation.",
+    prix: "60 € TTC",
+  },
+  {
+    title: "Convention d'honoraires",
+    description: "Document signé qui définit précisément le coût de l'intervention.",
+    prix: "Sur mesure",
+  },
+  {
+    title: "Forfait ou temps passé",
+    description: "Rémunération forfaitaire globale ou facturation au temps passé.",
+    prix: "Transparent",
+  },
+  {
+    title: "Honoraire de résultat",
+    description: "Complément possible si résultat particulièrement favorable.",
+    prix: "Optionnel",
+  },
+] as const;
+
+const engagements = [
+  "Convention d'honoraires systématique",
+  "Facturation conforme au travail accompli",
+  "Paiement échelonné possible",
+  "Facture récapitulative détaillée",
+] as const;
+---
+
+<BaseLayout
+  title="Honoraires — DRB Avocats"
+  description="Honoraires transparents du cabinet DRB Avocats à Cherbourg. Premier rendez-vous à 60€, convention d'honoraires systématique."
+  currentPath="/honoraires"
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-navy">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <p class="text-gold text-sm tracking-super-wide uppercase mb-6">
+        Honoraires
+      </p>
+      <h1
+        class="text-4xl lg:text-5xl font-display font-light text-white leading-tight max-w-3xl"
+      >
+        Transparence<br />
+        <span class="font-medium">et confiance</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div>
+          <p class="text-gold text-sm tracking-super-wide uppercase mb-6">
+            Notre approche
+          </p>
+          <h2
+            class="text-3xl lg:text-4xl font-display font-light text-navy leading-tight mb-8"
+          >
+            Une relation fondée<br />
+            <span class="font-medium">sur la clarté</span>
+          </h2>
+          <div class="space-y-6 text-charcoal/70 leading-relaxed">
+            <p>
+              Lors du premier rendez-vous, nous faisons connaissance : vous nous
+              expliquez votre problème et nous examinons ensemble nos
+              possibilités d'intervention et ses conditions financières.
+            </p>
+            <p>
+              Les honoraires des avocats sont libres et fixés en accord avec
+              leurs clients. Ils tiennent compte du temps passé, de la
+              complexité de la procédure et du résultat obtenu.
+            </p>
+            <p class="text-navy font-medium">
+              Ils tiennent compte aussi de votre situation personnelle.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-10 border border-sand/50">
+          <p class="text-gold text-xs tracking-wider uppercase mb-4">
+            Premier rendez-vous
+          </p>
+          <p class="text-5xl font-display font-light text-navy mb-2">
+            60 €<span class="text-lg text-charcoal/40 ml-2">TTC</span>
+          </p>
+          <p class="text-charcoal/50 text-sm leading-relaxed mb-8">
+            Environ 30 minutes pour faire connaissance et examiner les
+            possibilités d'intervention.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 text-navy hover:text-gold transition-colors text-sm font-medium"
+          >
+            Prendre rendez-vous
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notre pratique -->
+  <section class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <p class="text-gold text-sm tracking-super-wide uppercase mb-6">
+          Notre pratique
+        </p>
+        <h2 class="text-3xl lg:text-4xl font-display font-light text-navy">
+          Comment sont calculés<br />
+          <span class="font-medium">nos honoraires ?</span>
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          principes.map((principe, index) => (
+            <div class="p-8 bg-cream hover:bg-sand/30 transition-colors duration-300">
+              <span class="text-gold text-xs tracking-wider uppercase mb-3 block opacity-60">
+                0{index + 1}
+              </span>
+              <h3 class="text-lg font-display font-medium text-navy mb-3">
+                {principe.title}
+              </h3>
+              <p class="text-sm text-charcoal/50 leading-relaxed mb-4">
+                {principe.description}
+              </p>
+              <span class="text-navy font-medium text-sm">{principe.prix}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagements -->
+  <section class="py-32 bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div>
+          <p class="text-gold text-sm tracking-super-wide uppercase mb-6">
+            Nos engagements
+          </p>
+          <h2
+            class="text-3xl lg:text-4xl font-display font-light leading-tight mb-8"
+          >
+            Loyauté et<br />
+            <span class="font-medium">confiance</span>
+          </h2>
+          <p class="text-white/50 leading-relaxed">
+            Notre relation à nos clients est fondée sur la loyauté et la
+            confiance. Vous régularisez une convention d'honoraires et nous
+            appliquons loyalement notre accord : chaque facture émise correspond
+            au travail accompli.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {
+            engagements.map((engagement) => (
+              <div class="flex items-center gap-4 p-6 bg-white/5">
+                <span class="w-2 h-2 bg-gold rounded-full flex-shrink-0" />
+                <span class="text-white/80">{engagement}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Médiation -->
+  <section class="py-32 bg-cream">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <p class="text-gold text-sm tracking-super-wide uppercase mb-6">
+        En cas de litige
+      </p>
+      <h2 class="text-3xl lg:text-4xl font-display font-light text-navy mb-8">
+        Médiateur de la consommation
+      </h2>
+      <p class="text-charcoal/60 leading-relaxed mb-12">
+        En cas de litige avec votre avocat, vous pouvez recourir gratuitement au
+        Médiateur National près du Conseil National des Barreaux.
+      </p>
+      <div class="bg-white p-10 border border-sand/50 text-left max-w-xl mx-auto">
+        <p class="text-sm text-charcoal/70 mb-4">
+          <strong class="text-navy"
+            >Médiateur de la consommation de la profession d'avocat</strong
+          ><br />
+          22 rue de Londres, 75009 Paris
+        </p>
+        <div class="flex flex-col gap-2 text-sm">
+          <a
+            href="mailto:mediateur@mediateur-consommation-avocat.fr"
+            class="text-gold hover:underline"
+          >
+            mediateur@mediateur-consommation-avocat.fr
+          </a>
+          <a
+            href="https://mediateur-consommation-avocat.fr"
+            target="_blank"
+            rel="noopener"
+            class="text-gold hover:underline"
+          >
+            mediateur-consommation-avocat.fr
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

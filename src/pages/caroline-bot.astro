@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const domaines = [
+  {
+    title: "Responsabilité civile & médicale",
+    subtitle: "Indemnisation & préjudices",
+    description:
+      "Accompagnement des victimes d'accidents ou d'erreurs médicales. Reconnaissance de responsabilité et obtention d'une juste indemnisation.",
+  },
+  {
+    title: "Droit pénal routier",
+    subtitle: "Contentieux routier",
+    description:
+      "Défense dans les affaires d'infractions routières : excès de vitesse, accidents de la circulation, conduite en état alcoolique.",
+  },
+  {
+    title: "Droit bancaire",
+    subtitle: "Crédits & contentieux",
+    description:
+      "Accompagnement des entreprises et particuliers : octroi de crédits, saisies, impayés et recouvrements.",
+  },
+  {
+    title: "Droit des baux",
+    subtitle: "Habitations & commerces",
+    description:
+      "Conseil dans le choix du contrat, négociation des clauses. Contentieux : résiliation, fixation du loyer, expulsions.",
+  },
+] as const;
+
+const specialites = ["Responsabilité", "Pénal routier", "Bancaire", "Baux"] as const;
+---
+
+<BaseLayout
+  title="Caroline Bot — Avocat — DRB Avocats"
+  description="Caroline Bot, avocat et ancien Bâtonnier à Cherbourg. Spécialisée en responsabilité civile, droit pénal routier, droit bancaire et droit des baux."
+  currentPath="/caroline-bot"
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 bg-navy">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <a
+        href="/equipe"
+        class="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm mb-8"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+        </svg>
+        Retour à l'équipe
+      </a>
+      <p class="text-gold text-sm tracking-super-wide uppercase mb-6">
+        Avocat • Ancien Bâtonnier
+      </p>
+      <h1
+        class="text-4xl lg:text-5xl font-display font-light text-white leading-tight"
+      >
+        Caroline Bot
+      </h1>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section class="py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <!-- Image -->
+        <div class="relative">
+          <div class="aspect-[3/4] overflow-hidden bg-sand">
+            <img
+              src="https://le-de.cdn-website.com/e7b4430ff46446b59fbb67b6af12a95d/dms3rep/multi/opt/e054f26c-6862-4f61-b380-70438c7efb64-1600-1920w.jpg"
+              alt="Caroline Bot"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="absolute -bottom-6 -right-6 p-8 bg-gold text-navy">
+            <p class="text-xs tracking-wider uppercase mb-1 opacity-60">
+              Serment
+            </p>
+            <p class="font-display font-medium">13 janvier 2005</p>
+            <p class="text-sm opacity-80">Barreau de Rennes</p>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div>
+          <p class="text-gold text-sm tracking-super-wide uppercase mb-6">
+            Parcours
+          </p>
+          <h2
+            class="text-3xl lg:text-4xl font-display font-light text-navy leading-tight mb-8"
+          >
+            Une avocate<br />
+            <span class="font-medium">expérimentée</span>
+          </h2>
+          <div class="space-y-6 text-charcoal/70 leading-relaxed">
+            <p>
+              Diplômée d'un DEA transdisciplinaire des actes juridiques, j'ai
+              prêté serment le 13 janvier 2005 à Rennes.
+            </p>
+            <p>
+              Quittant ma Bretagne natale pour la verdoyante Normandie, j'ai
+              intégré le Barreau de Cherbourg en 2006.
+            </p>
+            <p>
+              Après cinq années de travail, j'ai rejoint Anne Rabaey le 1er
+              janvier 2011 pour créer ensemble la SELARL DRB AVOCATS.
+            </p>
+            <p class="text-navy font-medium">
+              En décembre 2017, mes confrères m'ont élue Bâtonnier du Barreau de
+              Cherbourg pour deux années.
+            </p>
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-sand">
+            <p class="text-xs tracking-wider uppercase text-charcoal/40 mb-4">
+              Domaines principaux
+            </p>
+            <div class="flex flex-wrap gap-3">
+              {specialites.map((specialite) => (
+                <span class="text-sm text-navy border border-navy/20 px-4 py-2">
+                  {specialite}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Domaines d'intervention -->
+  <section class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <p class="text-gold text-sm tracking-super-wide uppercase mb-6">
+          Expertise
+        </p>
+        <h2 class="text-3xl lg:text-4xl font-display font-light text-navy">
+          Domaines<br />
+          <span class="font-medium">d'intervention</span>
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-px bg-sand/50">
+        {
+          domaines.map((domaine) => (
+            <div class="bg-white p-10 hover:bg-cream transition-colors duration-300">
+              <p class="text-gold text-xs tracking-wider uppercase mb-3">
+                {domaine.subtitle}
+              </p>
+              <h3 class="text-lg font-display font-medium text-navy mb-3">
+                {domaine.title}
+              </h3>
+              <p class="text-sm text-charcoal/50 leading-relaxed">
+                {domaine.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-32 bg-navy text-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-display font-light mb-8">
+        Une question ?
+      </h2>
+      <p class="text-white/50 leading-relaxed mb-12 max-w-xl mx-auto">
+        Je suis à votre disposition pour vous conseiller et vous accompagner
+        dans vos démarches juridiques.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-8 py-4 bg-gold text-navy font-medium text-sm tracking-wide hover:bg-gold-light transition-all duration-300"
+        >
+          Prendre rendez-vous
+        </a>
+        <a
+          href="tel:0233941355"
+          class="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white text-sm tracking-wide hover:bg-white/5 transition-all duration-300"
+        >
+          02 33 94 13 55
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

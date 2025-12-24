@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  safelist: ['pt-32', 'pt-36', 'pt-40', 'pb-20'],
   theme: {
     extend: {
       colors: {
