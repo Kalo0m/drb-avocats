@@ -10,7 +10,7 @@ const pages = [
 ] as const;
 
 export const GET: APIRoute = () => {
-  const siteUrl = "https://www.drb-avocats.fr";
+  const siteUrl = "https://www.drbavocatscherbourg.com";
   const lastmod = new Date().toISOString().split("T")[0];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -37,6 +37,13 @@ ${pages
     },
   });
 };
+
+
+
+
+
+
+
 
 
 

@@ -1,11 +1,11 @@
 # Robots.txt pour DRB Avocats
-# https://www.drb-avocats.fr
+# https://www.drbavocatscherbourg.com
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.drb-avocats.fr/sitemap.xml
+Sitemap: https://www.drbavocatscherbourg.com/sitemap.xml
 
 # Bloquer les fichiers d'administration (si applicable)
 Disallow: /api/
@@ -19,6 +19,13 @@ Allow: /
 
 User-agent: DuckDuckBot
 Allow: /
+
+
+
+
+
+
+
 
 
 
