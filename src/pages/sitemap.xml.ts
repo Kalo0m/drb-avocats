@@ -7,6 +7,8 @@ const pages = [
   { url: "/caroline-bot", priority: "0.8", changefreq: "monthly" },
   { url: "/honoraires", priority: "0.7", changefreq: "monthly" },
   { url: "/contact", priority: "0.9", changefreq: "monthly" },
+  { url: "/mentions-legales", priority: "0.3", changefreq: "yearly" },
+  { url: "/politique-confidentialite", priority: "0.3", changefreq: "yearly" },
 ] as const;
 
 export const GET: APIRoute = () => {
