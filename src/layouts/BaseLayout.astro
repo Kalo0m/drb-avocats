@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { inject } from '@vercel/analytics';
 
 interface Props {
   readonly title: string;
@@ -162,6 +163,11 @@ const schemaOrg = {
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+    
+    <!-- Vercel Analytics -->
+    <script>
+      {inject()};
+    </script>
   </head>
   <body class="font-body text-charcoal bg-cream antialiased">
     <Header currentPath={currentPath} isTransparent={isTransparentHeader} />
