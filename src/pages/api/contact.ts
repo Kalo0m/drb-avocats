@@ -38,7 +38,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Envoi de l'email
     const { error } = await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "DRB Avocats <contact@drb-cherbourg.fr>",
       to: ["avocats@drb-cherbourg.fr"],
       replyTo: data.email,
       subject: `[Contact] ${data.subject || "Nouveau message"} - ${data.name}`,
